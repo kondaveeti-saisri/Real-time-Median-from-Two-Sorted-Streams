@@ -3,13 +3,13 @@
 
 Compute the running median across two continuously updating sorted streams (e.g., two stock exchanges) **without merging** the full streams.
 
----
+
 
 ## Overview
 
 This project efficiently computes the **real-time median** from two or more continuously updating sorted data streams — such as price feeds from multiple stock exchanges — while using **minimal memory** and ensuring **scalability**.
 
----
+
 
 ##  Objectives
 
@@ -17,7 +17,7 @@ This project efficiently computes the **real-time median** from two or more cont
 -  **Minimal memory usage** using heaps  
 -  **Scalable** to multiple data streams  
 
----
+
 
 ##  Concept
 
@@ -31,7 +31,7 @@ Each new value is inserted into the correct heap and rebalanced when necessary.
 - **Median retrieval:** `O(1)`  
 - **Insertion + rebalance:** `O(log n)`
 
----
+
 
 ##  Features
 
