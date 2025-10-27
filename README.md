@@ -1,47 +1,53 @@
-# Real-time-Median-from-Two-Sorted-Streams
+# 🧠 Real-time Median from Two Sorted Data Streams
 
+## 📘 Project Overview
+This project computes the **real-time median** value from **two continuously updating sorted data streams** — such as live prices from two different stock exchanges or readings from two sensors.  
 
-Compute the running median across two continuously updating sorted streams (e.g., two stock exchanges) **without merging** the full streams.
-
-
-
-## Overview
-
-This project efficiently computes the **real-time median** from two or more continuously updating sorted data streams — such as price feeds from multiple stock exchanges — while using **minimal memory** and ensuring **scalability**.
-
-
-
-##  Objectives
-
--  **Efficient real-time median computation**  
--  **Minimal memory usage** using heaps  
--  **Scalable** to multiple data streams  
-
-
-
-##  Concept
-
-The core logic maintains two balanced heaps:
-
-- **`max_heap`** – stores the **lower half** of elements (using negative values for max-heap behavior)  
-- **`min_heap`** – stores the **upper half** of elements  
-
-Each new value is inserted into the correct heap and rebalanced when necessary.  
-
-- **Median retrieval:** `O(1)`  
-- **Insertion + rebalance:** `O(log n)`
-
-
-
-##  Features
-
--  Real-time simulated streams using `asyncio` or `threading`  
--  Efficient heap-based median updates  
--  Command-line demo support  
--  Optional FastAPI + Streamlit visualization  
--  Unit testing with `pytest`
+Instead of merging both streams (which is slow and memory-heavy), the program efficiently updates the **running median** using two heaps (a max-heap and a min-heap).  
 
 ---
 
-## 🧩 Repository Layout
+## 🎯 Objectives
+- Calculate the **median** instantly as new data arrives.  
+- Handle **continuous data streams** efficiently.  
+- Use **minimal memory** (no full data merging).  
+- Demonstrate **real-time data processing** logic in Python.  
 
+---
+
+## ⚙️ How It Works
+1. Two simulated sorted data streams (`stream1` and `stream2`) continuously generate new values.  
+2. Each new value is added to one of two heaps:
+   - **Max-heap (low)** → stores the smaller half of numbers  
+   - **Min-heap (high)** → stores the larger half  
+3. The heaps stay balanced so that the median can be quickly computed:
+   - If both heaps have equal size → median = average of two middle values  
+   - Otherwise → median = top of the larger heap  
+4. The program prints the **current stream values** and **real-time median** continuously.
+
+---
+
+## 🧩 Example Output
+
+Stream1: 15, Stream2: 24, Median: 19.5
+Stream1: 20, Stream2: 28, Median: 22.0
+Stream1: 24, Stream2: 31, Median: 25.0
+
+
+This shows the new values arriving from both streams and the updated median after each step.
+
+---
+
+## 🛠️ Technologies Used
+- **Python 3**
+- **heapq** → for efficient median computation  
+- **time** → to simulate real-time delay  
+- **random** → to generate fake sorted stream data  
+
+---
+
+## 🚀 How to Run
+1. Open the folder in **VS Code**  
+2. Run the main script:
+   ```bash
+   python main.py
